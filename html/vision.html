@@ -1,0 +1,43 @@
+<h1 id="hacker-news-clone---cli-version">Hacker News Clone - CLI Version</h1>
+<p>The MVP of this project is a clone of <a href="https://news.ycombinator.com" class="uri">https://news.ycombinator.com</a> but in CLI. A user should be able to log in from the command line and be presented with a list of stories, along with a 'menu bar' that has the options in HN: news, comments, ask, show, jobs, submit (we will likely not use all of these options, but let's keep it as a clone for now).</p>
+<h2 id="features">features</h2>
+<h3 id="voting">voting</h3>
+<ol>
+<li><p>registration</p>
+<p>required to comment (?)</p></li>
+<li><p>search</p>
+<p>by popularity, date. I find it effective.</p></li>
+<li><p>threaded collapsible comments</p>
+<ul>
+<li>All threads threaded and collapsible. maxed by default. each can be minimized individually, collapsing all contained comments.</li>
+<li>main threads sorted by quality, replies chronological (?),</li>
+<li>poor quality comments remain visible but dimmed according to how downvoted</li>
+</ul></li>
+<li><p>user karma</p>
+<ul>
+<li>users have karma</li>
+<li>user post/comment history can be seen by clicking on their profile.</li>
+</ul></li>
+<li><p>voting</p>
+<p>regiistration required min karma required for downvoting (comments only?)</p></li>
+<li><p>sort algorithms (see note below)</p>
+<ul>
+<li>posts sorted by ratio of upvotes / newness / user karma / voodoo</li>
+</ul></li>
+<li><p>user control of search / sort options</p>
+<ul>
+<li>users can view HN sorted view, chrono posts, chrono comments, (?)</li>
+</ul></li>
+<li><p>'dead' (shadowbanned) profiles</p>
+<p>These are profiles where the user doesn't know they are 'shadowbanned', so they continue to post but can't tell that no one else can see it.</p>
+<ul>
+<li><a href="https://news.ycombinator.com/newsguidelines.html">explicit rules</a> and culture to encourage / discourage certain content</li>
+</ul></li>
+</ol>
+<h2 id="user-stories">User Stories</h2>
+<h3 id="mvp">MVP</h3>
+<ul>
+<li>landing page has a list of articles</li>
+<li>submit a story by pasting a link</li>
+</ul>
+<h3 id="logging-in">logging in</h3>
