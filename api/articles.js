@@ -1,42 +1,43 @@
-const router = require('express').Router()
-const { Article } = require('../db/models')
-const buildPage = require('./buildPage')
-module.exports = router
+const router = require('express').Router();
+const { Article } = require('../db/models');
+const buildPage = require('./buildPage');
+
+module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const articles = await Article.findAll()
+    const articles = await Article.findAll();
     const tbl = articles
       .map(
         article => `<tr><td>${article.title}</td><td>${article.link}</td></tr>`
       )
-      .join()
-    const page = buildPage(tbl)
-    console.log(page)
-    res.status(201).send(page)
+      .join();
+    const page = buildPage(tbl);
+    console.log(page);
+    res.status(201).send(page);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const article = await Article.findById(req.params.id)
-    console.log(article.title)
-    console.log('by: ' + article.author)
-    console.log(article.text)
-    res.status(201).send(article)
+    const article = await Article.findById(req.params.id);
+    console.log(article.title);
+    console.log(`by: ${article.author}`);
+    console.log(article.text);
+    res.status(201).send(article);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
 
 router.post('/', async (req, res, next) => {
-  const body = req.body
+  const body = req.body;
   try {
-    const article = await Article.create(body)
-    res.redirect(article.id)
+    const article = await Article.create(body);
+    res.redirect(article.id);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});

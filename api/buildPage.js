@@ -19,4 +19,4 @@ module.exports = listString =>
     </body>
   </html>
 
-`
+`;

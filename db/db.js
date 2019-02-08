@@ -1,7 +1,8 @@
-const Sequelize = require('sequelize')
-const pkg = require('../package.json')
+const Sequelize = require('sequelize');
+const pkg = require('../package.json');
 
-const databaseName = pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '')
+const databaseName =
+  pkg.name + (process.env.NODE_ENV === 'test' ? '-test' : '');
 
 const createDB = () => {
   const db = new Sequelize(
@@ -10,16 +11,16 @@ const createDB = () => {
       logging: false,
       operatorsAliases: false
     }
-  )
-  return db
-}
+  );
+  return db;
+};
 
-const db = createDB()
+const db = createDB();
 
-module.exports = db
+module.exports = db;
 
 // This is a global Mocha hook used for resource cleanup.
 // Otherwise, Mocha v4+ does not exit after tests.
 if (process.env.NODE_ENV === 'test') {
-  after('close database connection', () => db.close())
+  after('close database connection', () => db.close());
 }

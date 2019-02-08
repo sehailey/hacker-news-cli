@@ -1,4 +1,4 @@
-const Item = require('./item')
-const Article = require('./article')
+const Item = require('./item');
+const Article = require('./article');
 
-module.exports = { Item, Article }
+module.exports = { Item, Article };
