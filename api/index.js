@@ -1,20 +1,21 @@
-const router = require('express').Router();
+const router = require('express').Router()
 
-module.exports = router;
+module.exports = router
 
-router.use('/items', require('./items'));
-router.use('/articles', require('./articles'));
+router.use('/items', require('./items'))
+router.use('/articles', require('./articles'))
+router.use('/comments', require('./comments'))
 
 router.get('/', async (req, res, next) => {
   try {
-    res.send('/n-------/nHello from Express!/n--------/n');
+    res.send('/n-------/nHello from Express!/n--------/n')
   } catch (err) {
-    next(err);
+    next(err)
   }
-});
+})
 
 router.use((req, res, next) => {
-  const error = new Error('Not Found!!!!!!!');
-  error.status = 404;
-  next(error);
-});
+  const error = new Error('Not Found!!!!!!!')
+  error.status = 404
+  next(error)
+})

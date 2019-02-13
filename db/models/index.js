@@ -1,19 +1,19 @@
 const Item = require('./item')
 const Article = require('./article')
 const Comment = require('./comment')
-//const User = require('./user')
+const User = require('./user')
 
-Article.hasMany(Comment) //puts postId on Comment
+Article.hasMany(Comment) // allows for addComment
 Comment.belongsTo(Article)
 
-//User.hasMany(Article) //puts userId on Post, creates instance method 'user.getPosts()'
-//Article.belongsTo(User) // creates instance method 'post.getUser()''
+User.hasMany(Article)
+Article.belongsTo(User) // allows for setUser
 
-//User.hasMany(Comment) //puts userId on Comment
-//Comment.belongsTo(User) //puts userId on Comment
+User.hasMany(Comment)
+Comment.belongsTo(User)
 
-// TODO
-//Comment.belongsTo(Comment, { as: 'parent' })
-//Comment.hasMany(Comment, { as: { singular: 'reply', plural: 'replies' } })
+// i understand more now: parent must be set instead of reply.
 
-module.exports = { Item, Article, Comment }
+Comment.belongsTo(Comment, { as: 'parent' }) // setParent
+
+module.exports = { Item, Article, Comment, User }

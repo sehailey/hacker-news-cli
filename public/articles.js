@@ -1,16 +1,19 @@
 const router = require('express').Router()
 const { Article } = require('../db/models')
-const buildPage = require('../scripts/buildPage')
-const buildTable = require('../scripts/buildArticleTable')
+const buildPage = require('./buildPage')
 
 module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
     const articles = await Article.findAll()
-    const tbl = buildTable(articles)
+    const tbl = articles
+      .map(
+        article => `<tr><td>${article.title}</td><td>${article.link}</td></tr>`
+      )
+      .join()
     const page = buildPage(tbl)
-    console.log('REEEEEEEEEEEEEEEEEEE\n', page, tbl)
+    console.log(page)
     res.status(201).send(page)
   } catch (err) {
     next(err)

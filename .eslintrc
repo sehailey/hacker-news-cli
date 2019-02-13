@@ -12,9 +12,9 @@
 
   "rules": {
     "quotes": ["warn", "single"],
-    "semi": ["warn", "never"],
+    "semi": ["error", "never"],
     "indent": ["warn", 2],
     "no-unused-vars": ["warn"],
-    "no-console": 0
+    "no-console": ["off"]
   }
 }
