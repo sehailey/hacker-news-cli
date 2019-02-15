@@ -6,10 +6,8 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const comments = await Comment.findAll({
-      attributes: ['id', 'title', 'content', 'userId', 'parentId'],
+      attributes: ['id', 'title', 'content', 'userId', 'parentId']
     })
-    const page = buildPage(
-    res.status(201).send()
   } catch (err) {
     next(err)
   }

@@ -8,10 +8,7 @@ module.exports = router
 router.get('/', async (req, res, next) => {
   try {
     const articles = await Article.findAll()
-    const tbl = buildTable(articles)
-    const page = buildPage(tbl)
-    console.log('REEEEEEEEEEEEEEEEEEE\n', page, tbl)
-    res.status(201).send(page)
+    res.status(201).send(articles)
   } catch (err) {
     next(err)
   }
