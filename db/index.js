@@ -1,18 +1,6 @@
 const db = require('./db')
-const { Article, Vote, User } = require('./models')
-// sigh
-// I am using Sequelize as an ORM for the database.
-// It has its own syntax for defining the relations
-// in the database. Something like the following:
-Article.belongsTo(User)
-User.hasMany(Article)
-
-Article.hasMany(Vote)
-Vote.belongsTo(Article)
-
-Vote.belongsTo(User)
-User.hasMany(Vote)
-
+require('./models')
+module.exports = db
 // the questions are:
 // 1. how to store votes in the database? as a count on the article? this would be less accurate but ok for the beginning <- I am not a fan of this approach
 // 2. what votes do we count? (anon, per ip address, cookies?) to build relations between votes we need a concept of users based identification <- yep!
@@ -26,5 +14,3 @@ User.hasMany(Vote)
 // view content: https://irc.anarchyplanet.org/git/notnull/hacker-news-cli/issues/4
 // post content: https://irc.anarchyplanet.org/git/notnull/hacker-news-cli/issues/3
 // votes: https://irc.anarchyplanet.org/git/notnull/hacker-news-cli/issues/5
-
-module.exports = db

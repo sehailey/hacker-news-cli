@@ -1,6 +1,6 @@
-/* 
-note: this currently isn't exported because I will 
-have to investigate the salting etc. 
+/*
+note: this currently isn't exported because I will
+have to investigate the salting etc.
 */
 
 const crypto = require('crypto')
@@ -73,6 +73,7 @@ User.encryptPassword = function(plainText, salt) {
 /**
  * hooks
  */
+
 const setSaltAndPassword = user => {
   if (user.changed('password')) {
     user.salt = User.generateSalt()
@@ -80,5 +81,6 @@ const setSaltAndPassword = user => {
   }
 }
 
-User.beforeCreate(setSaltAndPassword)
-User.beforeUpdate(setSaltAndPassword)
+//TODO figure out why these arent't working
+User.addHook('beforeCreate', user => setSaltAndPassword(user))
+User.addHook('beforeUpdate', user => setSaltAndPassword(user))
